@@ -10,7 +10,7 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  _yes.buildlin:
+  _yes-buildlin:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +22,7 @@ jobs:
       - name: Run tests
         run: cargo test --verbose
 
-  _yes.buildwin:
+  _yes-buildwin:
     runs-on: windows-latest
 
     steps:
@@ -34,7 +34,7 @@ jobs:
       - name: Run tests
         run: cargo test --verbose
 
-  _num_guess.buildlin:
+  _num_guess-buildlin:
     runs-on: ubuntu-latest
 
     steps:
@@ -46,7 +46,7 @@ jobs:
       - name: Run tests
         run: cargo test --verbose
 
-  _num_guess.buildwin:
+  _num_guess-buildwin:
     runs-on: windows-latest
 
     steps:
