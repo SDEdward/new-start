@@ -1,4 +1,15 @@
-target/
-!target/debug/
-!target/debug/learn
-!target/debug/yes
+# Ignore all target folders
+_num_guess/target/
+_yes/target/
+
+# Unignore only the release binary
+!_num_guess/target/release/num_guess
+!_yes/target/release/yes
+
+# Re-ignore everything else in release/
+_num_guess/target/release/*
+_yes/target/release/*
+
+# Re-unignore the binary again (needed because the above line re-ignored it)
+!_num_guess/target/release/num_guess
+!_yes/target/release/yes
