@@ -1,1 +1,3 @@
 target/
+!/target/debug/learn
+!/target/debug/yes
