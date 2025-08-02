@@ -12,56 +12,52 @@ env:
 jobs:
   _yes-buildlin:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-      - name: Ls
-        run: ls
-      - name: Cd
-        run: cd _yes
-      - name: Build
+
+      - name: Build _yes (Linux)
         run: cargo build --verbose
-      - name: Run tests
+        working-directory: _yes
+
+      - name: Test _yes (Linux)
         run: cargo test --verbose
+        working-directory: _yes
 
   _yes-buildwin:
     runs-on: windows-latest
-
     steps:
       - uses: actions/checkout@v4
-      - name: Ls
-        run: ls
-      - name: Cd
-        run: cd _yes
-      - name: Build
+
+      - name: Build _yes (Windows)
         run: cargo build --verbose
-      - name: Run tests
+        working-directory: _yes
+
+      - name: Test _yes (Windows)
         run: cargo test --verbose
+        working-directory: _yes
 
   _num_guess-buildlin:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-      - name: Ls
-        run: ls
-      - name: Cd
-        run: cd _num_guess
-      - name: Build
+
+      - name: Build _num_guess (Linux)
         run: cargo build --verbose
-      - name: Run tests
+        working-directory: _num_guess
+
+      - name: Test _num_guess (Linux)
         run: cargo test --verbose
+        working-directory: _num_guess
 
   _num_guess-buildwin:
     runs-on: windows-latest
-
     steps:
       - uses: actions/checkout@v4
-      - name: Ls
-        run: ls
-      - name: Cd
-        run: cd _num_guess
-      - name: Build
+
+      - name: Build _num_guess (Windows)
         run: cargo build --verbose
-      - name: Run tests
+        working-directory: _num_guess
+
+      - name: Test _num_guess (Windows)
         run: cargo test --verbose
+        working-directory: _num_guess
