@@ -15,10 +15,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Cd
-        run: cd _yes
       - name: Ls
         run: ls
+      - name: Cd
+        run: cd _yes
       - name: Build
         run: cargo build --verbose
       - name: Run tests
@@ -29,10 +29,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Cd
-        run: cd _yes
       - name: Ls
         run: ls
+      - name: Cd
+        run: cd _yes
       - name: Build
         run: cargo build --verbose
       - name: Run tests
@@ -43,10 +43,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Cd
-        run: cd _num_guess
       - name: Ls
         run: ls
+      - name: Cd
+        run: cd _num_guess
       - name: Build
         run: cargo build --verbose
       - name: Run tests
@@ -57,10 +57,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Cd
-        run: cd _num_guess
       - name: Ls
         run: ls
+      - name: Cd
+        run: cd _num_guess
       - name: Build
         run: cargo build --verbose
       - name: Run tests
