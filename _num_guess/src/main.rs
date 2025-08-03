@@ -1,3 +1,5 @@
+/* what are you doin here this project is done (ignore clippy) */
+
 use std::cmp::Ordering; //makes +, -, and = available for comparison
 use std::io; //input/output library
 
