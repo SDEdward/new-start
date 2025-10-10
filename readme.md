@@ -1,34 +1,46 @@
 # new-start
 
-here i post random projects i make to learn rust and maybe give it an actual usage later
+Here I post random projects I make to learn rust and maybe give it an actual usage later.
 
-license is MIT
+License is **MIT**.
 
-### current projects:
+### Current Projects:
 
 ## yes
 
+#### **FINISHED**
+
 > oh, yes!
 
-- this is litterary the yes command in linux but written in rust
-- hey atleast now you have yes in windows
+- This is literally the yes command from Linux but written in rust.
+- Hey, at least now you have yes on Windows.
 
 ## num_guess
 
-> guess the number
+#### **FINISHED**
 
-- litterary the rust tutorial
-- highly NOT addictive
+> guess the number.
+
+- literally the rust tutorial.
+- highly NOT addictive.
 
 ## decho
 
-> youre being so dramatic
+#### **WIP**
 
-- echo but 1 character at a time with a random interval in bethween
-- very dramatic
+> you're so dramatic.
 
-### **I ALSO ACCEPT OTHER PEOPLES PROJECTS HERE!!!**
+- echo but 1 character at a time with a random interval in between.
+- very dramatic.
 
-or contributing on the docs (markdown for now)
+## remember
 
-just email me and make a push request
+#### **WIP**
+
+> useless.
+
+- Made just so I remember rust.
+
+### **I ALSO ACCEPT OTHER PEOPLE'S PROJECTS HERE!!!**
+
+just email me before anything.
