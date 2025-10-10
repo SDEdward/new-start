@@ -41,6 +41,15 @@ License is **MIT**.
 
 - Made just so I remember rust.
 
+## io_test
+
+#### finished
+
+> remember that grocery list i gave you?
+
+- litterary a list that u cant delete stuff from
+- it actually tought me a lot of stuff wow (chatgpt used only for the 2nd option and not in full)
+
 ### **I ALSO ACCEPT OTHER PEOPLE'S PROJECTS HERE!!!**
 
 just email me before anything.
