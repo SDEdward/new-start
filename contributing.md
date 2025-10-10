@@ -21,7 +21,7 @@ Please follow these conventions to keep things clean and consistent:
 
 - Use [**Prettier**](https://prettier.io/) for formatting.
 - Use **`snake_case`** for most variable and file names.
-- Prefix **program folders** with an underscore (`_`) so they appear first in file explorer.
+- Prefix **program folders** with an exclamation mark (`!`) so they appear first in file explorer.
 - Add your files and folders to `.gitignore` if they shouldn't be tracked.
 - Place the **complete build of your program** in the `release/` folder at the root of the project.
 - If you're familiar with GitHub Actions, feel free to add your program to the workflow. If you dont know how I'll do it!
