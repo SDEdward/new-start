@@ -39,11 +39,12 @@ License is **MIT**.
 
 > useless.
 
-- Made just so I remember rust.
+- made just so I remember rust.
+- either bid farewell cruel world or hello world
 
 ## io_test
 
-#### finished
+#### **FINISHED** (unless i make stuff deletable)
 
 > remember that grocery list i gave you?
 
