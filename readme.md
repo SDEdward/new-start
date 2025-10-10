@@ -20,6 +20,13 @@ license is MIT
 - litterary the rust tutorial
 - highly NOT addictive
 
+## decho
+
+> youre being so dramatic
+
+- echo but 1 character at a time with a random interval in bethween
+- very dramatic
+
 ### **I ALSO ACCEPT OTHER PEOPLES PROJECTS HERE!!!**
 
 or contributing on the docs (markdown for now)
