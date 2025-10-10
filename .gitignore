@@ -1,4 +1,4 @@
 # Ignore all target folders
-!num_guess/
-!yes/
-!decho/
+\!num_guess/
+\!yes/
+\!decho/
