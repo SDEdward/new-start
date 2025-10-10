@@ -1,9 +1,11 @@
+# Ignore the following directories
 _num_guess/
 _yes/
 _decho/
 _remember/
 
-!_num_guess/src
-!_yes/src
-!_decho/src
-!_remember/src
+# Allow tracking of source directories within the above
+!_num_guess/src/
+!_yes/src/
+!_decho/src/
+!_remember/src/
