@@ -35,11 +35,21 @@ License is **MIT**.
 
 ## remember
 
-#### **WIP**
+#### **probably finished**
 
 > useless.
 
-- Made just so I remember rust.
+- made just so I remember rust.
+- either bid farewell cruel world or hello world
+
+## io_test
+
+#### **FINISHED** (unless i make stuff deletable)
+
+> remember that grocery list i gave you?
+
+- litterary a list that u cant delete stuff from
+- it actually tought me a lot of stuff wow (chatgpt used only for the 2nd option and not in full)
 
 ### **I ALSO ACCEPT OTHER PEOPLE'S PROJECTS HERE!!!**
 
