@@ -1,10 +1,10 @@
 # Ignore the following directories
-_num_guess/
-_yes/
-_decho/
-_remember/
+_num_guess/*
+_yes/*
+_decho/*
+_remember/*
 
-# Allow tracking of source directories within the above
+# Allow tracking of the src directories within the above
 !_num_guess/src/
 !_yes/src/
 !_decho/src/
