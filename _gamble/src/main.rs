@@ -1,13 +1,14 @@
 use rand::Rng;
-use std::cmp::Ordering;
+// use std::cmp::Ordering;
 use std::io;
 
 fn main() {
     let mut select = String::new();
     println!("Select a game:");
     println!("1: Blackjack");
-    println!("2: Slots");
+    println!("2: Slots (bad)");
     println!("3: Roulette (bad)");
+    println!("4: Exit");
     select.clear();
     io::stdin()
         .read_line(&mut select)
@@ -15,7 +16,7 @@ fn main() {
     let select: u8 = match select.trim().parse() {
         Ok(num) => num,
         Err(_) => {
-            println!("Invalid input. Please enter a number between 1 and 3.");
+            println!("Invalid input. Please enter a number between 1 and 4.");
             return;
         }
     };
@@ -28,6 +29,9 @@ fn main() {
         }
         3 => {
             roulette();
+        }
+        4 => {
+            // exits cuz nothing happens
         }
         _ => {
             println!("how the fuck do u fuck this up?");
@@ -102,27 +106,72 @@ fn bjgame() {
 
         match choice {
             1 => {
-                println!("You stand with {player}. Dealer reveals hidden card...");
-                println!("Dealer's total is {dealer}.");
-                // todo Add win/loss logic here
+                println!("\nYou stand with {player}. Dealer reveals hidden card...");
+                println!("Dealer's new total is {dealer}. ({dealer_deduction} was hidden)\n");
+                if dealer > 21 {
+                    println!("Dealer busted! You win\n");
+                    enter_to_go_back_bj();
+                } else if dealer > player {
+                    println!("Dealer wins!\n");
+                    enter_to_go_back_bj();
+                } else if player == dealer {
+                    println!("Push! Noone loses or wins!\n");
+                    enter_to_go_back_bj();
+                } else if player > dealer {
+                    loop {
+                        // println!("The dealer shows the hidden card and then hits...");
+                        // println!("He was hiding {dealer_deduction} ({dealer} in total)\n");
+                        let hit_dealer: u8 = rand::rng().random_range(1..=11);
+                        dealer += hit_dealer;
+                        println!("The dealer draws a {hit_dealer}, he now has {dealer}");
+
+                        if dealer > 21 {
+                            println!("Dealer busts! You win!\n");
+                            enter_to_go_back_bj();
+                        } else if dealer > player {
+                            println!("Dealer gets more then you! You lose!\n");
+                            enter_to_go_back_bj();
+                        } else if dealer == player {
+                            println!("Push! Noone loses or wins!");
+                            enter_to_go_back_bj();
+                        } else {
+                            let mut dummy = String::new();
+                            println!("Dealer grabs another card... (Enter to continue)\n");
+                            io::stdin().read_line(&mut dummy).expect("What how?");
+                            continue;
+                        }
+                    }
+                }
             }
+
             2 => {
                 let hit_card: u8 = rand::rng().random_range(1..=11);
                 player += hit_card;
-                println!("You drew a {hit_card}. Your total is now {player}.");
+                println!("\nYou drew a {hit_card}. Your total is now {player}.");
                 if player > 21 {
-                    println!("You bust! Dealer wins.");
-                    // todo enter to go back to the bj main menu
+                    println!("You bust! Dealer wins.\n");
+                    enter_to_go_back_bj();
                 } else {
-                    // todo same as the comment above
+                    println!("You are still in the game! Do you:");
+                    println!("1: Stand");
+                    println!("2: Hit");
                 }
             }
+
             _ => {
                 println!("Invalid choice. Try 1 or 2.");
                 continue;
             }
         }
     }
+}
+fn enter_to_go_back_bj() {
+    println!("Press enter to go back...");
+    let mut dummy = String::new();
+    io::stdin()
+        .read_line(&mut dummy)
+        .expect("Dude come on just press enter");
+    bj();
 }
 
 fn slot() {}
