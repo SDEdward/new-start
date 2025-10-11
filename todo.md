@@ -4,10 +4,10 @@
 - [ ] get a j\*b
 - [ ] make stephan do something with this repo
 - [ ] make a site for the repo
-- [ ] make a laws.md (see github.com/SDEdward/ons )
+- ~~[ ] make a laws.md (see github.com/SDEdward/ons )~~
 - [x] also make other markdown files (i know you like writing useless stuff :3 )
 - [ ] make a program named fuck so you can let your rage out on the terminal (created cuz i sometimes say fuck in the terminal when something dosent work)
 - [ ] make yes also accept custom strings like the real yes
-- [ ] stop writing this shit and learn rust dumbass
+- [x] stop writing this shit and learn rust dumbass
 - [ ] make an actual way to release my stuff
-- [ ] MAKE A PROJECT WITH GAMBLING GAMES OMG IM SO SMART
+- [x] MAKE A PROJECT WITH GAMBLING GAMES OMG IM SO SMART

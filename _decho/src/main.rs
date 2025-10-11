@@ -1,3 +1,5 @@
+/* very unfinished, i will do this correctly one day i swear */
+
 use rand::Rng; //use rand and io for usr input and random delay also thread and time for the delay
 use std::thread;
 use std::time::Duration;

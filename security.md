@@ -4,7 +4,7 @@
 
 If you discover a security vulnerability in this project, please report it responsibly. You can reach out by:
 
-- **Direct Message (DM):** [Link on profile](https://github.com/SDEdward)
+- **Direct Message (Discord):** [Link on profile](https://github.com/SDEdward)
 - **Email:** [Also on profile](https://github.com/SDEdward)
 
 Please include as much detail as possible to help me understand and address the issue quickly.

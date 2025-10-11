@@ -1,3 +1,5 @@
+/* list maker basically, finished ig ( add remvoving only 1 element maybe ) */
+
 use std::io;
 
 fn main() {

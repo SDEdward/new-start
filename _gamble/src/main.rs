@@ -1,5 +1,6 @@
+/* unfinished yet, also dont forget to fix the clippy warning */
+
 use rand::Rng;
-// use std::cmp::Ordering;
 use std::io;
 
 fn main() {

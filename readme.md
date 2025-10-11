@@ -51,6 +51,15 @@ License is **MIT**.
 - litterary a list that u cant delete stuff from
 - it actually tought me a lot of stuff wow (chatgpt used only for the 2nd option and not in full)
 
+## gamble
+
+#### **not finisjdede**
+
+> THE BEST ONLINE GAMBLING IN TOWN!!11!1!!!™
+
+- offline blackjack, roulette and slots
+- yes i lied abt it being online
+
 ### **I ALSO ACCEPT OTHER PEOPLE'S PROJECTS HERE!!!**
 
 just email me before anything.
