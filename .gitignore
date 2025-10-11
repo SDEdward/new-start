@@ -1,15 +1,7 @@
-# Ignore the following directories
-_num_guess/*
-_yes/*
-_decho/*
-_remember/*
-_io_test/*
-_gamble/*
+# Ignore the following directories (note that only target is ignored so the cargo.lock and cargo.toml stay)
+_num_guess/target/
+_yes/target/
+_remember/target/
+_io_test/target/
+_gamble/target/
 
-# Allow tracking of the src directories within the above
-!_num_guess/src/
-!_yes/src/
-!_decho/src/
-!_remember/src/
-!_io_test/src/
-!_gamble/src/
