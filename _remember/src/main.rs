@@ -1,3 +1,5 @@
+/* say either "Hello world!" or "Bid farewell cruel world!" */
+
 use rand::Rng;
 
 fn main() {
