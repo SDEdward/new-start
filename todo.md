@@ -10,3 +10,4 @@
 - [ ] make yes also accept custom strings like the real yes
 - [ ] stop writing this shit and learn rust dumbass
 - [ ] make an actual way to release my stuff
+- [ ] MAKE A PROJECT WITH GAMBLING GAMES OMG IM SO SMART
