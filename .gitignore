@@ -4,6 +4,7 @@ _yes/*
 _decho/*
 _remember/*
 _io_test/*
+_gamble/*
 
 # Allow tracking of the src directories within the above
 !_num_guess/src/
@@ -11,3 +12,4 @@ _io_test/*
 !_decho/src/
 !_remember/src/
 !_io_test/src/
+!_gamble/src/
