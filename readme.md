@@ -26,7 +26,7 @@ License is **MIT**.
 
 ## decho
 
-#### **WIP**
+#### **CURRENTLY DELETED FROM THE PROJECT FOLDER WILL BE BACK WHEN ITS REMADE!!!!**
 
 > you're so dramatic.
 
