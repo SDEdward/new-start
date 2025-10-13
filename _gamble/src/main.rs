@@ -229,77 +229,258 @@ fn roulette() {
 }
 
 fn roulettegame() {
+    let mut bet = String::new();
+
+    println!("Choose your bet by entering the number:\n");
+
+    println!("Bet 1: Single number");
+    println!("Bet 2: Red");
+    println!("Bet 3: Black");
+    println!("Bet 4: Even");
+    println!("Bet 5: Odd");
+    println!("Bet 6: Zero");
+    println!("Bet 7: 1-18");
+    println!("Bet 8: 19-36");
+    println!("Bet 9: 1-12");
+    println!("Bet 10: 13-24");
+    println!("Bet 11: 25-36");
+    println!("Bet 12: Column 1");
+    println!("Bet 13: Column 2");
+    println!("Bet 14: Column 3");
+
+    io::stdin().read_line(&mut bet).expect("say that again?");
+
+    let choice: u8 = match bet.trim().parse() {
+        Ok(num) => num,
+        Err(_) => {
+            println!("im bored of writing errors");
+            return;
+        }
+    };
+    loop {
+        match choice {
+            1 => {
+                println!("\nYou chose: Single Number. Enter a number between 1 and 36:");
+                let mut _numb = String::new();
+                io::stdin().read_line(&mut _numb).expect("what did i say");
+                let _numb: u8 = match _numb.trim().parse() {
+                    Ok(num) if num <= 36 => {
+                        println!("Bet placed on: {num}");
+                        num
+                    }
+                    _ => {
+                        println!("dude.");
+                        return;
+                    }
+                };
+                break;
+            }
+            2 => {
+                println!("Bet placed on: Red");
+                break;
+            }
+            3 => {
+                println!("Bet placed on: Black");
+                break;
+            }
+            4 => {
+                println!("Bet placed on: Even");
+                break;
+            }
+            5 => {
+                println!("Bet placed on: Odd");
+                break;
+            }
+            6 => {
+                println!("Bet placed on: Zero");
+                break;
+            }
+            7 => {
+                println!("Bet placed on: 1-18");
+                break;
+            }
+            8 => {
+                println!("Bet placed on: 19-36");
+                break;
+            }
+            9 => {
+                println!("Bet placed on: 1-12");
+                break;
+            }
+            10 => {
+                println!("Bet placed on: 13-24");
+                break;
+            }
+            11 => {
+                println!("Bet placed on: 25-36");
+                break;
+            }
+            12 => {
+                println!("Bet placed on: 1st Column");
+                break;
+            }
+            13 => {
+                println!("Bet placed on: 2nd Column");
+                break;
+            }
+            14 => {
+                println!("Bet placed on: 3rd Column");
+                break;
+            }
+            _ => {
+                println!("not a specified number");
+            }
+        }
+    }
+
+    spin_roulette(choice);
+}
+
+// todo remake the comments in this part so that theyre randomised!!!
+// todo finish this up cuz idk if it works
+// todo make a cinematic spinning texxtlike in battle of blacjack
+fn spin_roulette(bet: u8) {
     let red: [u8; 18] = [
         1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36,
     ];
     let black: [u8; 18] = [
         2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35,
     ];
-    // ! all code below is chatgpt made for me to know all the bets
-    println!("🎰 Welcome to Rust Roulette!");
-    println!("Choose your bet by entering the number:");
-
-    println!("--- Bet Options ---");
-    println!("1. Single Number (0–36)");
-    println!("2. Color: Red");
-    println!("3. Color: Black");
-    println!("4. Even");
-    println!("5. Odd");
-    println!("6. Low (1–18)");
-    println!("7. High (19–36)");
-    println!("8. 1st Dozen (1–12)");
-    println!("9. 2nd Dozen (13–24)");
-    println!("10. 3rd Dozen (25–36)");
-    println!("11. 1st Column");
-    println!("12. 2nd Column");
-    println!("13. 3rd Column");
-    println!("14. Snake Bet");
-    println!("15. All Primes");
-    println!("16. Multiples of 3");
-    println!("17. Numbers ending in 7");
-
-    let mut input = String::new();
-    io::stdin()
-        .read_line(&mut input)
-        .expect("Failed to read input");
-
-    let choice: u32 = match input.trim().parse() {
-        Ok(num) => num,
-        Err(_) => {
-            println!("Invalid input. Please enter a number.");
-            return;
-        }
-    };
-
-    match choice {
+    let column1: [u8; 12] = [1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34];
+    let column2: [u8; 12] = [2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35];
+    let column3: [u8; 12] = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36];
+    let spinned: u8 = rand::rng().random_range(0..=36);
+    println!("spinned {spinned}");
+    match bet {
         1 => {
-            println!("You chose: Single Number. Enter a number between 0 and 36:");
-            let mut num_input = String::new();
-            io::stdin()
-                .read_line(&mut num_input)
-                .expect("Failed to read number");
-            match num_input.trim().parse::<u8>() {
-                Ok(n) if n <= 36 => println!("Bet placed on number: {}", n),
-                _ => println!("Invalid number."),
+            if bet == spinned {
+                println!("YOU WON WITH A SINGLE NUMBER. WHAT?!?!?")
+                //ec (enter to continue)
+            } else {
+                println!("ur not winning with a single number lil bro")
+                //ec
             }
         }
-        2 => println!("Bet placed on: Red"),
-        3 => println!("Bet placed on: Black"),
-        4 => println!("Bet placed on: Even"),
-        5 => println!("Bet placed on: Odd"),
-        6 => println!("Bet placed on: Low (1–18)"),
-        7 => println!("Bet placed on: High (19–36)"),
-        8 => println!("Bet placed on: 1st Dozen (1–12)"),
-        9 => println!("Bet placed on: 2nd Dozen (13–24)"),
-        10 => println!("Bet placed on: 3rd Dozen (25–36)"),
-        11 => println!("Bet placed on: 1st Column"),
-        12 => println!("Bet placed on: 2nd Column"),
-        13 => println!("Bet placed on: 3rd Column"),
-        14 => println!("Bet placed on: Snake Bet"),
-        15 => println!("Bet placed on: All Primes"),
-        16 => println!("Bet placed on: Multiples of 3"),
-        17 => println!("Bet placed on: Numbers ending in 7"),
-        _ => println!("Invalid choice."),
-        // ! ensure above code is correct !!!!!
+        2 => {
+            if red.contains(&spinned) {
+                println!("put it all on red and won it all");
+                //ec
+            } else {
+                println!("hehe no money for you");
+                //ec
+            }
+        }
+        3 => {
+            if black.contains(&spinned) {
+                println!("put it all on black and won!!!")
+                //ec
+            } else {
+                println!("lost all of the money!!!!");
+                //ec
+            }
+        }
+        4 => {
+            if spinned % 2 == 0 {
+                println!("good job but even isnt that spectacular");
+                //ec
+            } else {
+                println!("u lost on even; come on it was 50/50!");
+                //ec
+            }
+        }
+        5 => {
+            if spinned % 2 != 0 {
+                println!("hip hip horray you won odd!!");
+                //ec
+            } else {
+                println!("you lost in odd. fuck theese loss messages");
+                //ec
+            }
+        }
+        6 => {
+            if spinned == 0 {
+                println!("YOU WON WITH 0???!?!?!? STOP CHEATING!??!?!?!?");
+                //ec
+            } else {
+                println!("did u actually expect to win?");
+                //ec
+            }
+        }
+        7 => {
+            if (1..=18).contains(&spinned) {
+                println!("good job ill write better texts tommorow i swear");
+                //ec
+            } else {
+                println!("you lost.");
+                //ec
+            }
+        }
+        8 => {
+            if (19..=36).contains(&spinned) {
+                println!("good fucking job; you won!!");
+                //ec
+            } else {
+                println!("ok enough losing");
+                //ec
+            }
+        }
+        9 => {
+            if (1..=12).contains(&spinned) {
+                println!("u are basic but u won!!");
+                //ec
+            } else {
+                println!("losses, losses, people make losees");
+                //ec
+            }
+        }
+        10 => {
+            if (13..=24).contains(&spinned) {
+                println!("idek what to tell u anymore but u won!");
+                //ec
+            } else {
+                println!("YOU WONN!!!!! jk u lost lol");
+                //ec
+            }
+        }
+        11 => {
+            if (25..=36).contains(&spinned) {
+                println!("you lost... JK YOU WON!!!!");
+                //ec
+            } else {
+                println!("time to go to the amanet to get more gambling money!!! (you lost)");
+                //ec
+            }
+        }
+        12 => {
+            if column1.contains(&spinned) {
+                println!("omg column 1 soooooo interesting... you did win tho!");
+                //ec
+            } else {
+                println!("time to flip the table ig... (u lost)");
+                //ec
+            }
+        }
+        13 => {
+            if column2.contains(&spinned) {
+                println!("its 2 am when im writing this and im sleep deprived but you won!!!");
+                //ec
+            } else {
+                println!("FUCK THIS RIGGED FUCK FUCK SHIT GAME!!!!!!! (u lost)");
+                //ec
+            }
+        }
+        14 => {
+            if column3.contains(&spinned) {
+                println!("finally ican get some sleep but good job u won!");
+                //ec
+            } else {
+                println!("good job... you lost!")
+                //ec
+            }
+        }
+        _ => println!(
+            "if im pretty sure this is unreachable cuz theres 2 chacks adn if the first one fails this one should to but you do you ig?",
+            //ec
+        ),
     }
 }
