@@ -188,7 +188,10 @@ fn enter_to_go_back_bj() {
     bj();
 }
 
-fn slot() {}
+fn slot() {
+    println!("sorry not finished actuyally not even started rn");
+    pretext();
+}
 
 fn roulette() {
     let mut choice = String::new();
@@ -225,4 +228,78 @@ fn roulette() {
     }
 }
 
-fn roulettegame() {}
+fn roulettegame() {
+    let red: [u8; 18] = [
+        1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36,
+    ];
+    let black: [u8; 18] = [
+        2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35,
+    ];
+    // ! all code below is chatgpt made for me to know all the bets
+    println!("🎰 Welcome to Rust Roulette!");
+    println!("Choose your bet by entering the number:");
+
+    println!("--- Bet Options ---");
+    println!("1. Single Number (0–36)");
+    println!("2. Color: Red");
+    println!("3. Color: Black");
+    println!("4. Even");
+    println!("5. Odd");
+    println!("6. Low (1–18)");
+    println!("7. High (19–36)");
+    println!("8. 1st Dozen (1–12)");
+    println!("9. 2nd Dozen (13–24)");
+    println!("10. 3rd Dozen (25–36)");
+    println!("11. 1st Column");
+    println!("12. 2nd Column");
+    println!("13. 3rd Column");
+    println!("14. Snake Bet");
+    println!("15. All Primes");
+    println!("16. Multiples of 3");
+    println!("17. Numbers ending in 7");
+
+    let mut input = String::new();
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read input");
+
+    let choice: u32 = match input.trim().parse() {
+        Ok(num) => num,
+        Err(_) => {
+            println!("Invalid input. Please enter a number.");
+            return;
+        }
+    };
+
+    match choice {
+        1 => {
+            println!("You chose: Single Number. Enter a number between 0 and 36:");
+            let mut num_input = String::new();
+            io::stdin()
+                .read_line(&mut num_input)
+                .expect("Failed to read number");
+            match num_input.trim().parse::<u8>() {
+                Ok(n) if n <= 36 => println!("Bet placed on number: {}", n),
+                _ => println!("Invalid number."),
+            }
+        }
+        2 => println!("Bet placed on: Red"),
+        3 => println!("Bet placed on: Black"),
+        4 => println!("Bet placed on: Even"),
+        5 => println!("Bet placed on: Odd"),
+        6 => println!("Bet placed on: Low (1–18)"),
+        7 => println!("Bet placed on: High (19–36)"),
+        8 => println!("Bet placed on: 1st Dozen (1–12)"),
+        9 => println!("Bet placed on: 2nd Dozen (13–24)"),
+        10 => println!("Bet placed on: 3rd Dozen (25–36)"),
+        11 => println!("Bet placed on: 1st Column"),
+        12 => println!("Bet placed on: 2nd Column"),
+        13 => println!("Bet placed on: 3rd Column"),
+        14 => println!("Bet placed on: Snake Bet"),
+        15 => println!("Bet placed on: All Primes"),
+        16 => println!("Bet placed on: Multiples of 3"),
+        17 => println!("Bet placed on: Numbers ending in 7"),
+        _ => println!("Invalid choice."),
+        // ! ensure above code is correct !!!!!
+    }
+}
