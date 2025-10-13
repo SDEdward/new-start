@@ -2,7 +2,7 @@
 
 - [ ] dramatic echo that ouputs your shit either 1 letter at a time or at a random delay
 - [ ] get a j\*b
-- [ ] make stephan do something with this repo
+- ~~[ ] make stephan do something with this repo~~ he no no wanna :(
 - [ ] make a site for the repo
 - ~~[ ] make a laws.md (see github.com/SDEdward/ons )~~
 - [x] also make other markdown files (i know you like writing useless stuff :3 )
@@ -11,3 +11,4 @@
 - [x] stop writing this shit and learn rust dumbass
 - [ ] make an actual way to release my stuff
 - [x] MAKE A PROJECT WITH GAMBLING GAMES OMG IM SO SMART
+- [ ] finish roulette then the slots in \_gamble, maybe even add mroe games!!!
