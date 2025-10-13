@@ -5,11 +5,25 @@ use std::io;
 
 fn main() {
     let mut select = String::new();
+    println!(r#"HELLO PRESS ANYTHING TO PLAY!!!!!!!!! (or "q" to quit)"#); // r# at end and start make it a raw sting and enable ""
+    io::stdin().read_line(&mut select).expect("kill yourself");
+    match select.trim() {
+        "q" => {
+            //exits cuz nun happens
+        }
+        _ => {
+            pretext();
+        }
+    }
+}
+
+fn pretext() {
+    let mut select = String::new();
     println!("Select a game:");
     println!("1: Blackjack");
     println!("2: Slots (bad)");
     println!("3: Roulette (bad)");
-    println!("4: Exit");
+    println!("4: Quit");
     select.clear();
     io::stdin()
         .read_line(&mut select)
@@ -17,7 +31,7 @@ fn main() {
     let select: u8 = match select.trim().parse() {
         Ok(num) => num,
         Err(_) => {
-            println!("Invalid input. Please enter a number between 1 and 4.");
+            println!("1, 2 or 3. ONE, TWO OR THREE");
             return;
         }
     };
@@ -31,8 +45,7 @@ fn main() {
         3 => {
             roulette();
         }
-        4 => {
-            // exits cuz nothing happens
+        4 => { //exit 
         }
         _ => {
             println!("how the fuck do u fuck this up?");
@@ -68,7 +81,7 @@ fn bj() {
             }
             2 => {
                 println!("Returning to main menu...\n");
-                main();
+                pretext();
             }
             _ => {
                 println!("Invalid choice. Please enter 1 or 2.");
@@ -177,4 +190,39 @@ fn enter_to_go_back_bj() {
 
 fn slot() {}
 
-fn roulette() {}
+fn roulette() {
+    let mut choice = String::new();
+
+    loop {
+        println!();
+        println!("Welcome to roulette!!!!!!!");
+        println!("Say 1 to play or 2 to go back");
+
+        choice.clear();
+        io::stdin().read_line(&mut choice).expect("1 or 2.");
+
+        let choice: u8 = match choice.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("dumbass ts not 1 or 2");
+                continue;
+            }
+        };
+
+        match choice {
+            1 => {
+                println!();
+                roulettegame();
+            }
+            2 => {
+                println!("Returning to main menu...\n");
+                pretext();
+            }
+            _ => {
+                println!("1 or 2 dumbass");
+            }
+        }
+    }
+}
+
+fn roulettegame() {}
