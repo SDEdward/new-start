@@ -272,7 +272,7 @@ fn roulettegame() {
                     }
                     _ => {
                         println!("dude.");
-                        return;
+                        continue;
                     }
                 };
                 spin_roulette(choice, numb);
