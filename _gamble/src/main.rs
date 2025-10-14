@@ -178,6 +178,7 @@ fn bjgame() {
         }
     }
 }
+
 fn enter_to_go_back_bj() {
     println!("Press enter to go back...");
     let mut dummy = String::new();
