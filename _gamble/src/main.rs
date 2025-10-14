@@ -7,48 +7,47 @@ fn main() {
     let mut select = String::new();
     println!(r#"HELLO PRESS ANYTHING TO PLAY!!!!!!!!! (or "q" to quit)"#); // r# at end and start make it a raw sting and enable ""
     io::stdin().read_line(&mut select).expect("kill yourself");
-    match select.trim() {
-        "q" => {
-            //exits cuz nun happens
-        }
-        _ => {
-            pretext();
-        }
+    if !matches!(select.trim(), "q") {
+        pretext();
     }
 }
 
 fn pretext() {
     let mut select = String::new();
-    println!("Select a game:");
+    println!("\nSelect a game:");
     println!("1: Blackjack");
     println!("2: Slots (bad)");
     println!("3: Roulette (bad)");
     println!("4: Quit");
-    select.clear();
-    io::stdin()
-        .read_line(&mut select)
-        .expect("Err: unable to read line; what");
-    let select: u8 = match select.trim().parse() {
-        Ok(num) => num,
-        Err(_) => {
-            println!("1, 2 or 3. ONE, TWO OR THREE");
-            return;
-        }
-    };
-    match select {
-        1 => {
-            bj();
-        }
-        2 => {
-            slot();
-        }
-        3 => {
-            roulette();
-        }
-        4 => { //exit 
-        }
-        _ => {
-            println!("how the fuck do u fuck this up?");
+    loop {
+        select.clear();
+        io::stdin()
+            .read_line(&mut select)
+            .expect("Err: unable to read line; what");
+        let select: u8 = match select.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("1, 2 or 3. ONE, TWO OR THREE");
+                continue;
+            }
+        };
+        match select {
+            1 => {
+                bj();
+            }
+            2 => {
+                slot();
+            }
+            3 => {
+                roulette();
+            }
+            4 => {
+                break;
+            }
+            _ => {
+                println!("how the fuck do u fuck this up?");
+                continue;
+            }
         }
     }
 }
@@ -258,6 +257,7 @@ fn roulettegame() {
         }
     };
     bet.clear();
+    println!();
     loop {
         match choice {
             1 => {
@@ -350,9 +350,8 @@ fn roulettegame() {
 }
 
 // todo remake the comments (ingame) in this part so that theyre randomised!!!
-// todo finish this up cuz idk if it works
-// todo make a cinematic spinning texxtlike in battle of blacjack
 fn spin_roulette(bet: u8, numb: u8) {
+    let mut next = String::new();
     let red: [u8; 18] = [
         1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36,
     ];
@@ -363,137 +362,152 @@ fn spin_roulette(bet: u8, numb: u8) {
     let column2: [u8; 12] = [2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35];
     let column3: [u8; 12] = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36];
     let spinned: u8 = rand::rng().random_range(0..=36);
-    println!("spinned {spinned}");
+    println!("The roulette spins... (enter to continue)");
+    io::stdin().read_line(&mut next).expect("FUCK YOU");
+    if red.contains(&spinned) {
+        println!("It lands on... {spinned}, red!");
+    } else if black.contains(&spinned) {
+        println!("It lands on... {spinned}, black!");
+    } else {
+        println!("It lands on... {spinned}!");
+    }
+
     match bet {
         1 => {
             if numb == spinned && (1..=36).contains(&numb) {
                 println!("YOU WON WITH A SINGLE NUMBER. WHAT?!?!?");
-                //ec
-            } else if !(1..=36).contains(&numb) {
+                enter_to_continue_roulette();
+            } else {
                 println!("booohooooo you lost dumbass");
-                //ec
+                enter_to_continue_roulette();
             }
         }
         2 => {
             if red.contains(&spinned) {
                 println!("put it all on red and won it all");
-                //ec
+                enter_to_continue_roulette();
             } else {
                 println!("hehe no money for you");
-                //ec
+                enter_to_continue_roulette();
             }
         }
         3 => {
             if black.contains(&spinned) {
-                println!("put it all on black and won!!!")
-                //ec
+                println!("put it all on black and won!!!");
+                enter_to_continue_roulette();
             } else {
                 println!("lost all of the money!!!!");
-                //ec
+                enter_to_continue_roulette();
             }
         }
         4 => {
             if spinned % 2 == 0 {
                 println!("good job but even isnt that spectacular");
-                //ec
+                enter_to_continue_roulette();
             } else {
                 println!("u lost on even; come on it was 50/50!");
-                //ec
+                enter_to_continue_roulette();
             }
         }
         5 => {
             if spinned % 2 != 0 {
                 println!("hip hip horray you won odd!!");
-                //ec
+                enter_to_continue_roulette();
             } else {
                 println!("you lost in odd. fuck theese loss messages");
-                //ec
+                enter_to_continue_roulette();
             }
         }
         6 => {
             if spinned == 0 {
                 println!("YOU WON WITH 0???!?!?!? STOP CHEATING!??!?!?!?");
-                //ec
+                enter_to_continue_roulette();
             } else {
                 println!("did u actually expect to win?");
-                //ec
+                enter_to_continue_roulette();
             }
         }
         7 => {
             if (1..=18).contains(&spinned) {
                 println!("good job ill write better texts tommorow i swear");
-                //ec
+                enter_to_continue_roulette();
             } else {
                 println!("you lost.");
-                //ec
+                enter_to_continue_roulette();
             }
         }
         8 => {
             if (19..=36).contains(&spinned) {
                 println!("good fucking job; you won!!");
-                //ec
+                enter_to_continue_roulette();
             } else {
                 println!("ok enough losing");
-                //ec
+                enter_to_continue_roulette();
             }
         }
         9 => {
             if (1..=12).contains(&spinned) {
                 println!("u are basic but u won!!");
-                //ec
+                enter_to_continue_roulette();
             } else {
                 println!("losses, losses, people make losees");
-                //ec
+                enter_to_continue_roulette();
             }
         }
         10 => {
             if (13..=24).contains(&spinned) {
                 println!("idek what to tell u anymore but u won!");
-                //ec
+                enter_to_continue_roulette();
             } else {
                 println!("YOU WONN!!!!! jk u lost lol");
-                //ec
+                enter_to_continue_roulette();
             }
         }
         11 => {
             if (25..=36).contains(&spinned) {
                 println!("you lost... JK YOU WON!!!!");
-                //ec
+                enter_to_continue_roulette();
             } else {
                 println!("time to go to the amanet to get more gambling money!!! (you lost)");
-                //ec
+                enter_to_continue_roulette();
             }
         }
         12 => {
             if column1.contains(&spinned) {
                 println!("omg column 1 soooooo interesting... you did win tho!");
-                //ec
+                enter_to_continue_roulette();
             } else {
                 println!("time to flip the table ig... (u lost)");
-                //ec
+                enter_to_continue_roulette();
             }
         }
         13 => {
             if column2.contains(&spinned) {
                 println!("its 2 am when im writing this and im sleep deprived but you won!!!");
-                //ec
+                enter_to_continue_roulette();
             } else {
                 println!("FUCK THIS RIGGED FUCK FUCK SHIT GAME!!!!!!! (u lost)");
-                //ec
+                enter_to_continue_roulette();
             }
         }
         14 => {
             if column3.contains(&spinned) {
                 println!("finally ican get some sleep but good job u won!");
-                //ec
+                enter_to_continue_roulette();
             } else {
-                println!("good job... you lost!")
-                //ec
+                println!("good job... you lost!");
+                enter_to_continue_roulette();
             }
         }
         _ => println!(
             "if im pretty sure this is unreachable cuz theres 2 chacks adn if the first one fails this one should to but you do you ig?",
-            //ec
         ),
     }
+}
+
+fn enter_to_continue_roulette() {
+    let mut dummy = String::new();
+    println!("\nPress enter to continue...");
+    io::stdin().read_line(&mut dummy).expect("what?!?!?");
+    roulette();
 }
