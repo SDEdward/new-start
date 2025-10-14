@@ -257,14 +257,15 @@ fn roulettegame() {
             return;
         }
     };
+    bet.clear();
     loop {
         match choice {
             1 => {
+                let mut numb = String::new();
                 println!("\nYou chose: Single Number. Enter a number between 1 and 36:");
-                let mut _numb = String::new();
-                io::stdin().read_line(&mut _numb).expect("what did i say");
-                let _numb: u8 = match _numb.trim().parse() {
-                    Ok(num) if num <= 36 => {
+                io::stdin().read_line(&mut numb).expect("what did i say");
+                let numb: u8 = match numb.trim().parse() {
+                    Ok(num) if (1..36).contains(&num) => {
                         println!("Bet placed on: {num}");
                         num
                     }
@@ -273,58 +274,72 @@ fn roulettegame() {
                         return;
                     }
                 };
+                spin_roulette(choice, numb);
                 break;
             }
             2 => {
                 println!("Bet placed on: Red");
+                spin_roulette(choice, 0);
                 break;
             }
             3 => {
                 println!("Bet placed on: Black");
+                spin_roulette(choice, 0);
                 break;
             }
             4 => {
                 println!("Bet placed on: Even");
+                spin_roulette(choice, 0);
                 break;
             }
             5 => {
                 println!("Bet placed on: Odd");
+                spin_roulette(choice, 0);
                 break;
             }
             6 => {
                 println!("Bet placed on: Zero");
+                spin_roulette(choice, 0);
                 break;
             }
             7 => {
                 println!("Bet placed on: 1-18");
+                spin_roulette(choice, 0);
                 break;
             }
             8 => {
                 println!("Bet placed on: 19-36");
+                spin_roulette(choice, 0);
                 break;
             }
             9 => {
                 println!("Bet placed on: 1-12");
+                spin_roulette(choice, 0);
                 break;
             }
             10 => {
                 println!("Bet placed on: 13-24");
+                spin_roulette(choice, 0);
                 break;
             }
             11 => {
                 println!("Bet placed on: 25-36");
+                spin_roulette(choice, 0);
                 break;
             }
             12 => {
                 println!("Bet placed on: 1st Column");
+                spin_roulette(choice, 0);
                 break;
             }
             13 => {
                 println!("Bet placed on: 2nd Column");
+                spin_roulette(choice, 0);
                 break;
             }
             14 => {
                 println!("Bet placed on: 3rd Column");
+                spin_roulette(choice, 0);
                 break;
             }
             _ => {
@@ -332,14 +347,12 @@ fn roulettegame() {
             }
         }
     }
-
-    spin_roulette(choice);
 }
 
-// todo remake the comments in this part so that theyre randomised!!!
+// todo remake the comments (ingame) in this part so that theyre randomised!!!
 // todo finish this up cuz idk if it works
 // todo make a cinematic spinning texxtlike in battle of blacjack
-fn spin_roulette(bet: u8) {
+fn spin_roulette(bet: u8, numb: u8) {
     let red: [u8; 18] = [
         1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36,
     ];
@@ -353,11 +366,11 @@ fn spin_roulette(bet: u8) {
     println!("spinned {spinned}");
     match bet {
         1 => {
-            if bet == spinned {
-                println!("YOU WON WITH A SINGLE NUMBER. WHAT?!?!?")
-                //ec (enter to continue)
-            } else {
-                println!("ur not winning with a single number lil bro")
+            if numb == spinned && (1..=36).contains(&numb) {
+                println!("YOU WON WITH A SINGLE NUMBER. WHAT?!?!?");
+                //ec
+            } else if !(1..=36).contains(&numb) {
+                println!("booohooooo you lost dumbass");
                 //ec
             }
         }

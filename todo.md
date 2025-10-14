@@ -12,3 +12,6 @@
 - [ ] make an actual way to release my stuff
 - [x] MAKE A PROJECT WITH GAMBLING GAMES OMG IM SO SMART
 - [ ] finish roulette then the slots in \_gamble, maybe even add mroe games!!!
+- [ ] using enum make the ace in blackjack work propely!
+- [ ] remake backjack once u finish the other hames; use enums , struct adn shit!
+- [ ] find out what thread , async , thread::Sleep and Time are (modules!)
