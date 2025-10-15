@@ -2,6 +2,8 @@
 
 use rand::Rng;
 use std::io;
+use std::thread;
+use std::time;
 
 fn main() {
     let mut select = String::new();
@@ -189,8 +191,74 @@ fn enter_to_go_back_bj() {
 }
 
 fn slot() {
-    println!("sorry not finished actuyally not even started rn");
-    pretext();
+    let mut choice = String::new();
+
+    loop {
+        println!();
+        println!("Welcome to slots!1!11!!");
+        println!("Say 1 to play or 2 to go back");
+
+        choice.clear();
+        io::stdin()
+            .read_line(&mut choice)
+            .expect("Failed to read input");
+
+        let choice: u8 = match choice.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("Invalid input. Please enter 1 or 2.");
+                continue;
+            }
+        };
+
+        match choice {
+            1 => {
+                println!();
+                slotsgame();
+            }
+            2 => {
+                println!("Returning to main menu...\n");
+                pretext();
+            }
+            _ => {
+                println!("Invalid choice. Please enter 1 or 2.");
+            }
+        }
+    }
+}
+
+fn slotsgame() {
+    let icons = ["🍒", "🍋", "🔔", "💎", "🍉", "🎰", "⭐", "🃏"];
+
+    println!("🎰 The slots spin... (press Enter)");
+    let mut dummy = String::new();
+    io::stdin()
+        .read_line(&mut dummy)
+        .expect("Failed to read line");
+
+    let mut rng = rand::rng();
+    let spin_time = time::Duration::from_millis(100);
+
+    // Simulate spinning animation
+    for _ in 0..15 {
+        let temp1 = icons[rng.random_range(0..icons.len())];
+        let temp2 = icons[rng.random_range(0..icons.len())];
+        let temp3 = icons[rng.random_range(0..icons.len())];
+        print!("\r[{temp1}] [{temp2}] [{temp3}]");
+        io::Write::flush(&mut io::stdout()).unwrap();
+        thread::sleep(spin_time);
+    }
+
+    // Final result
+    let slot1 = rng.random_range(0..icons.len());
+    let slot2 = rng.random_range(0..icons.len());
+    let slot3 = rng.random_range(0..icons.len());
+
+    let pick1 = icons[slot1];
+    let pick2 = icons[slot2];
+    let pick3 = icons[slot3];
+
+    println!("\n🎉 Final result: [{pick1}] [{pick2}] [{pick3}]");
 }
 
 fn roulette() {
