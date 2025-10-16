@@ -1,14 +1,19 @@
-/* unfinished yet, also dont forget to fix the clippy warning */
+/* unfinished yet... actually if i get lazy it is lol */
 
 use rand::Rng;
 use std::io;
-use std::thread;
-use std::time;
+use std::thread::sleep; // sadly tokio wants async and thats overcomplycated so were using std sleep
+use std::time::Duration;
 
 fn main() {
     let mut select = String::new();
-    println!(r#"HELLO PRESS ANYTHING TO PLAY!!!!!!!!! (or "q" to quit)"#); // r# at end and start make it a raw sting and enable ""
+
+    println!(r#"HELLO PRESS ANYTHING TO PLAY!!!!!!!!! (or "q" to quit)"#); // r#..# here makes me able to use "" and () in the string
+
+    // read_line returns a Result; if it fails, this crashes with a message (which is... intense)
     io::stdin().read_line(&mut select).expect("kill yourself");
+
+    // the !matches! is a cleaner way to check if input is "q" ( not matches (function) )
     if !matches!(select.trim(), "q") {
         pretext();
     }
@@ -21,11 +26,15 @@ fn pretext() {
     println!("2: Slots (bad)");
     println!("3: Roulette (bad)");
     println!("4: Quit");
+
     loop {
-        select.clear();
+        select.clear(); // clean the string cuz it itz loopin
+
         io::stdin()
             .read_line(&mut select)
             .expect("Err: unable to read line; what");
+
+        // try to turn input into a number (u8)
         let select: u8 = match select.trim().parse() {
             Ok(num) => num,
             Err(_) => {
@@ -33,20 +42,22 @@ fn pretext() {
                 continue;
             }
         };
+
         match select {
             1 => {
-                bj();
+                bj(); // blackjack
             }
             2 => {
-                slot();
+                slot(); // slots
             }
             3 => {
-                roulette();
+                roulette(); // roulette
             }
             4 => {
-                break;
+                break; // quit
             }
             _ => {
+                // if it's not 1–4, roast and retry
                 println!("how the fuck do u fuck this up?");
                 continue;
             }
@@ -54,6 +65,7 @@ fn pretext() {
     }
 }
 
+// ? remake this using objects and shit??\
 fn bj() {
     let mut choice = String::new();
 
@@ -63,14 +75,14 @@ fn bj() {
         println!("Say 1 to play or 2 to go back");
 
         choice.clear();
-        io::stdin()
-            .read_line(&mut choice)
-            .expect("Failed to read input");
 
+        io::stdin().read_line(&mut choice).expect("come on");
+
+        // try to turn input into a number (u8)
         let choice: u8 = match choice.trim().parse() {
             Ok(num) => num,
             Err(_) => {
-                println!("Invalid input. Please enter 1 or 2.");
+                println!("1 or 2.");
                 continue;
             }
         };
@@ -78,26 +90,28 @@ fn bj() {
         match choice {
             1 => {
                 println!();
-                bjgame();
+                bjgame(); // start blackjack game
             }
             2 => {
                 println!("Returning to main menu...\n");
-                pretext();
+                pretext(); // go back to game select
             }
             _ => {
-                println!("Invalid choice. Please enter 1 or 2.");
+                println!("grrrr >:c");
             }
         }
     }
 }
 
 fn bjgame() {
+    // dealer and player both get random starting cards between 2 and 21
     let mut dealer: u8 = rand::rng().random_range(2..=21);
     let mut player: u8 = rand::rng().random_range(2..=21);
-    dealer -= 1;
-    let dealer_deduction: u8 = rand::rng().random_range(1..=dealer);
-    dealer += 1;
-    let fake_dealer: u8 = dealer - dealer_deduction;
+
+    dealer -= 1; // temporarily lower dealer's total to hide a card
+    let dealer_deduction: u8 = rand::rng().random_range(1..=dealer); // this is the hidden card
+    dealer += 1; // restore dealer's full total
+    let fake_dealer: u8 = dealer - dealer_deduction; // what the player sees
 
     println!("Dealer has {fake_dealer} showing (1 card hidden)");
     println!("You have {player}\n");
@@ -111,8 +125,9 @@ fn bjgame() {
             .read_line(&mut choice)
             .expect("Idk how u made this panic man wtf!?!??");
 
+        // try to turn input into a number (u8)
         let choice: u8 = match choice.trim().parse() {
-            Ok(num) => num, // remember that num here can be anythiung ( its a temporary variable )
+            Ok(num) => num,
             Err(_) => {
                 println!("NUMBER MASON NUMBER!!!!! (less than 256 btw)");
                 continue;
@@ -121,8 +136,11 @@ fn bjgame() {
 
         match choice {
             1 => {
+                // player stands, dealer reveals hidden card
                 println!("\nYou stand with {player}. Dealer reveals hidden card...");
                 println!("Dealer's new total is {dealer}. ({dealer_deduction} was hidden)\n");
+
+                // check who wins or if dealer busts
                 if dealer > 21 {
                     println!("Dealer busted! You win\n");
                     enter_to_go_back_bj();
@@ -133,9 +151,8 @@ fn bjgame() {
                     println!("Push! Noone loses or wins!\n");
                     enter_to_go_back_bj();
                 } else if player > dealer {
+                    // dealer hits until outcome is decided
                     loop {
-                        // println!("The dealer shows the hidden card and then hits...");
-                        // println!("He was hiding {dealer_deduction} ({dealer} in total)\n");
                         let hit_dealer: u8 = rand::rng().random_range(1..=11);
                         dealer += hit_dealer;
                         println!("The dealer draws a {hit_dealer}, he now has {dealer}");
@@ -150,6 +167,7 @@ fn bjgame() {
                             println!("Push! Noone loses or wins!");
                             enter_to_go_back_bj();
                         } else {
+                            // dealer still behind, draw again
                             let mut dummy = String::new();
                             println!("Dealer grabs another card... (Enter to continue)\n");
                             io::stdin().read_line(&mut dummy).expect("What how?");
@@ -160,13 +178,17 @@ fn bjgame() {
             }
 
             2 => {
+                // player hits
                 let hit_card: u8 = rand::rng().random_range(1..=11);
                 player += hit_card;
                 println!("\nYou drew a {hit_card}. Your total is now {player}.");
+
+                // check if player busts
                 if player > 21 {
                     println!("You bust! Dealer wins.\n");
                     enter_to_go_back_bj();
                 } else {
+                    // still alive, ask again
                     println!("You are still in the game! Do you:");
                     println!("1: Stand");
                     println!("2: Hit");
@@ -174,7 +196,8 @@ fn bjgame() {
             }
 
             _ => {
-                println!("Invalid choice. Try 1 or 2.");
+                // anything other than 1 or 2
+                println!("dumbass");
                 continue;
             }
         }
@@ -184,44 +207,37 @@ fn bjgame() {
 fn enter_to_go_back_bj() {
     println!("Press enter to go back...");
     let mut dummy = String::new();
+
+    // waits for user to press enter, then sends them back to blackjack menu
     io::stdin()
         .read_line(&mut dummy)
         .expect("Dude come on just press enter");
+
     bj();
 }
 
+// todo: finish
 fn slot() {
     let mut choice = String::new();
 
     loop {
         println!();
         println!("Welcome to slots!1!11!!");
-        println!("Say 1 to play or 2 to go back");
+        println!("Say anything to play or q to go back");
 
         choice.clear();
         io::stdin()
             .read_line(&mut choice)
             .expect("Failed to read input");
 
-        let choice: u8 = match choice.trim().parse() {
-            Ok(num) => num,
-            Err(_) => {
-                println!("Invalid input. Please enter 1 or 2.");
-                continue;
-            }
-        };
-
-        match choice {
-            1 => {
-                println!();
-                slotsgame();
-            }
-            2 => {
+        match choice.trim() {
+            "q" => {
                 println!("Returning to main menu...\n");
                 pretext();
+                break;
             }
             _ => {
-                println!("Invalid choice. Please enter 1 or 2.");
+                slotsgame();
             }
         }
     }
@@ -229,38 +245,48 @@ fn slot() {
 
 fn slotsgame() {
     let icons = ["🍒", "🍋", "🔔", "💎", "🍉", "🎰", "⭐", "🃏"];
-
-    println!("🎰 The slots spin... (press Enter)");
-    let mut dummy = String::new();
-    io::stdin()
-        .read_line(&mut dummy)
-        .expect("Failed to read line");
-
+    let spin_time = Duration::from_millis(150);
     let mut rng = rand::rng();
-    let spin_time = time::Duration::from_millis(100);
 
-    // Simulate spinning animation
+    println!("The slots spin...\n");
+
+    let mut slot1 = "";
+    let mut slot2 = "";
+    let mut slot3 = "";
+
+    // Simulate spinning all three slots together
     for _ in 0..15 {
-        let temp1 = icons[rng.random_range(0..icons.len())];
-        let temp2 = icons[rng.random_range(0..icons.len())];
-        let temp3 = icons[rng.random_range(0..icons.len())];
-        print!("\r[{temp1}] [{temp2}] [{temp3}]");
-        io::Write::flush(&mut io::stdout()).unwrap();
-        thread::sleep(spin_time);
+        slot1 = icons[rng.random_range(0..icons.len())];
+        slot2 = icons[rng.random_range(0..icons.len())];
+        slot3 = icons[rng.random_range(0..icons.len())];
+
+        print!("\r[{slot1}] [{slot2}] [{slot3}]");
+        io::Write::flush(&mut io::stdout()).expect("Flush failed");
+        sleep(spin_time);
     }
 
-    // Final result
-    let slot1 = rng.random_range(0..icons.len());
-    let slot2 = rng.random_range(0..icons.len());
-    let slot3 = rng.random_range(0..icons.len());
+    println!(); // Move to next line after final spin
 
-    let pick1 = icons[slot1];
-    let pick2 = icons[slot2];
-    let pick3 = icons[slot3];
+    // Result evaluation
+    if slot1 == slot2 && slot2 == slot3 {
+        println!("You win big!!!! wow!!");
+    } else if slot1 == slot2 || slot2 == slot3 || slot1 == slot3 {
+        println!("You win good enough ig...");
+    } else {
+        println!("You lost lol");
+    }
 
-    println!("\n🎉 Final result: [{pick1}] [{pick2}] [{pick3}]");
+    //enter_to_continue_slots();
 }
 
+/* fn enter_to_continue_slots() {
+    let mut dummy = String::new();
+    println!("\nPress enter to continue...");
+    io::stdin().read_line(&mut dummy).expect("what?!?!?");
+    slot();
+} */
+
+// * idk if u can make this better but u should try
 fn roulette() {
     let mut choice = String::new();
 
