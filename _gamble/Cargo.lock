@@ -11,6 +11,17 @@ dependencies = [
 
 [[package]]
 name = "cfg-if"
+<<<<<<< HEAD
+version = "1.0.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801"
+
+[[package]]
+name = "getrandom"
+version = "0.3.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "899def5c37c4fd7b2664648c28120ecec138e4d395b459e5ca34f9cce2dd77fd"
+=======
 version = "1.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2fd1289c04a9ea8cb22300a459a72a385d7c73d3259e2ed7dcb2af674838cfa9"
@@ -20,11 +31,16 @@ name = "getrandom"
 version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "26145e563e54f2cadc477553f1ec5ee650b00862f0a58bcd12cbdc5f0ea2d2f4"
+>>>>>>> 38983e1207f059166680f27deddafde30656ad13
 dependencies = [
  "cfg-if",
  "libc",
  "r-efi",
+<<<<<<< HEAD
+ "wasip2",
+=======
  "wasi",
+>>>>>>> 38983e1207f059166680f27deddafde30656ad13
 ]
 
 [[package]]
@@ -113,6 +129,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f63a545481291138910575129486daeaf8ac54aee4387fe7906919f7830c7d9d"
 
 [[package]]
+<<<<<<< HEAD
+=======
 name = "wasi"
 version = "0.14.7+wasi-0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -122,6 +140,7 @@ dependencies = [
 ]
 
 [[package]]
+>>>>>>> 38983e1207f059166680f27deddafde30656ad13
 name = "wasip2"
 version = "1.0.1+wasi-0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
