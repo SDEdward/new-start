@@ -21,13 +21,12 @@ fn main() {
         return;
     } */
 
-    if let Some(parent) = path.parent() {
-        if !parent.exists() {
-            if let Err(e) = fs::create_dir_all(parent) {
-                println!("Failed to create parent directories: {e}");
-                return;
-            }
-        }
+    if let Some(parent) = path.parent()
+        && !parent.exists()
+        && let Err(e) = fs::create_dir_all(parent)
+    {
+        println!("Failed to create parent directories: {e}");
+        return;
     }
 
     if path.is_dir() {

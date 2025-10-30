@@ -496,7 +496,7 @@ fn spin_roulette(bet: u8, numb: u8) {
             }
         }
         4 => {
-            if spinned % 2 == 0 {
+            if spinned.is_multiple_of(2) {
                 println!("good job but even isnt that spectacular");
                 enter_to_continue_roulette();
             } else {
@@ -505,7 +505,7 @@ fn spin_roulette(bet: u8, numb: u8) {
             }
         }
         5 => {
-            if spinned % 2 != 0 {
+            if !spinned.is_multiple_of(2) {
                 println!("hip hip horray you won odd!!");
                 enter_to_continue_roulette();
             } else {
