@@ -26,7 +26,7 @@ fn main() {
 }
 
 fn dares(players: Vec<String>) {
-    let dares = vec![
+    let dares = [
         "Sing a song loudly",
         "Do 10 jumping jacks",
         "Tell a funny story",
