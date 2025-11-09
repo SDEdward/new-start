@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Loop through all subdirectories
+for dir in */ ; do
+  if [ -d "$dir" ]; then
+    echo "Cleaning in $dir"
+    (cd "$dir" && cargo clean)
+  fi
+done
