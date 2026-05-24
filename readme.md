@@ -1,5 +1,7 @@
 # new-start
 
+![alt text](https://github.com/SDEdward/new-start/blob/main/compass.svg)
+
 Here I post random projects I make to learn rust and maybe give it an actual usage later.
 
 License is **MIT**.
